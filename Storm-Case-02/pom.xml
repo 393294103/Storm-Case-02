@@ -10,12 +10,15 @@
 	<name>Storm-Case-02</name>
 	<url>http://maven.apache.org</url>
 
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<storm.version>1.0.3</storm.version>
 		<scope>provided</scope>
 		<jdkLevel>1.7</jdkLevel>
+
+		<!--在需要设置字符集的地方，引用${project.build.sourceEncoding}即可-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 	</properties>
 
 	<dependencies>
@@ -110,6 +113,7 @@
 	</dependencies>
 
 	<build>
+		<!--build下和编译相关-->
 		<resources>
 			<!-- <resource> <directory>src/main/scala</directory> <filtering>true</filtering>
 				</resource> -->

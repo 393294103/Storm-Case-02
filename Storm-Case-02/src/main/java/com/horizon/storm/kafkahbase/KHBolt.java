@@ -30,19 +30,23 @@ public class KHBolt extends BaseRichBolt {
     public void execute(Tuple input) {
         String line=input.getString(0);
         String[] words=line.split(" ");
+
         for(String word:words){
-            //int count =1;
-            //this.collector.emit(new Values(word,count));
-            if(map.containsKey(word)){
-                map.put(word,map.get(word)+1);
-            }else {
-                map.put(word,1);
+
+            if (!word.equals("")){
+              //  this.collector.emit(tuple(word,1));
+                if(map.containsKey(word)){
+                    map.put(word,map.get(word)+1);
+                }else {
+                    map.put(word,1);
+                }
             }
         }
+
         for (Map.Entry<String,Integer> e:map.entrySet()){
-            this.collector.emit(tuple(e.getKey(), e.getValue()));
+            this.collector.emit(tuple(e.getKey(),e.getValue().toString()));
         }
-        this.collector.ack(input);
+     this.collector.ack(input);
     }
 
     @Override

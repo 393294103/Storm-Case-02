@@ -25,8 +25,6 @@ public class KHTopology {
     private static final String HBASE_BOLT = "HBASE_BOLT";
     private static final String TOPOLOGY_ID = "KHTopology";
 
-
-
     public static void main(String[] args){
 
          //从zookeeper动态读取broker
@@ -54,6 +52,7 @@ public class KHTopology {
 
         SimpleHBaseMapper mapper = new SimpleHBaseMapper()
                 .withRowKeyField("word")
+                //.withCounterFields(new Fields("count"))
                 .withColumnFields(new Fields("count"))
                 .withColumnFamily("result");
 
